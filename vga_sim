@@ -1,0 +1,207 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_01241F00 .scope module, "tb_vga_controller" "tb_vga_controller" 2 4;
+ .timescale -9 -12;
+v0127F598_0 .var/i "active_lines", 31 0;
+v0127F5F0_0 .var/i "active_pixels", 31 0;
+v0127ED58_0 .var "clk_pix", 0 0;
+v0127EDB0_0 .net "hsync", 0 0, L_0121B220; 1 drivers
+v01280B20_0 .var/i "i", 31 0;
+v01280968_0 .net "pixel_x", 9 0, L_01280700; 1 drivers
+v01280808_0 .net "pixel_y", 9 0, L_01280180; 1 drivers
+v012807B0_0 .var "reset", 0 0;
+v01280AC8_0 .net "video_on", 0 0, L_01280EC8; 1 drivers
+v01280BD0_0 .net "vsync", 0 0, L_0121B808; 1 drivers
+E_01244528 .event negedge, v0127F4E8_0;
+E_012442E8 .event posedge, v0127F4E8_0;
+S_012426F8 .scope module, "dut" "vga_controller" 2 19, 3 2, S_01241F00;
+ .timescale -9 -12;
+P_01252B24 .param/l "H_ACTIVE" 3 18, +C4<01010000000>;
+P_01252B38 .param/l "H_BACK" 3 21, +C4<0110000>;
+P_01252B4C .param/l "H_FRONT" 3 19, +C4<010000>;
+P_01252B60 .param/l "H_START" 3 31, +C4<010010000>;
+P_01252B74 .param/l "H_SYNC" 3 20, +C4<01100000>;
+P_01252B88 .param/l "H_TOTAL" 3 22, +C4<01100100000>;
+P_01252B9C .param/l "V_ACTIVE" 3 24, +C4<0111100000>;
+P_01252BB0 .param/l "V_BACK" 3 27, +C4<0100001>;
+P_01252BC4 .param/l "V_FRONT" 3 25, +C4<01010>;
+P_01252BD8 .param/l "V_START" 3 32, +C4<0100011>;
+P_01252BEC .param/l "V_SYNC" 3 26, +C4<010>;
+P_01252C00 .param/l "V_TOTAL" 3 28, +C4<01000001101>;
+L_0121B220 .functor NOT 1, L_01280B78, C4<0>, C4<0>, C4<0>;
+L_0121B808 .functor NOT 1, L_01280860, C4<0>, C4<0>, C4<0>;
+L_0121B338 .functor AND 1, L_01280A70, L_012808B8, C4<1>, C4<1>;
+L_0121B488 .functor AND 1, L_0121B338, L_0127FE10, C4<1>, C4<1>;
+L_01280EC8 .functor AND 1, L_0121B488, L_0127FE68, C4<1>, C4<1>;
+v0121AE18_0 .net *"_s0", 10 0, L_012809C0; 1 drivers
+v0127F858_0 .net *"_s10", 10 0, L_01280758; 1 drivers
+v0127FA10_0 .net *"_s13", 0 0, C4<0>; 1 drivers
+v0127FBC8_0 .net *"_s14", 10 0, C4<00000000010>; 1 drivers
+v0127F8B0_0 .net *"_s16", 0 0, L_01280860; 1 drivers
+v0127F908_0 .net *"_s20", 10 0, L_01280A18; 1 drivers
+v0127F960_0 .net *"_s23", 0 0, C4<0>; 1 drivers
+v0127FB70_0 .net *"_s24", 10 0, C4<00010010000>; 1 drivers
+v0127FB18_0 .net *"_s26", 0 0, L_01280A70; 1 drivers
+v0127F7A8_0 .net *"_s28", 12 0, L_01280910; 1 drivers
+v0127FAC0_0 .net *"_s3", 0 0, C4<0>; 1 drivers
+v0127F800_0 .net *"_s31", 2 0, C4<000>; 1 drivers
+v0127F9B8_0 .net *"_s32", 12 0, C4<0001100010000>; 1 drivers
+v0127FA68_0 .net *"_s34", 0 0, L_012808B8; 1 drivers
+v0127F750_0 .net *"_s36", 0 0, L_0121B338; 1 drivers
+v0127F018_0 .net *"_s38", 10 0, L_01280078; 1 drivers
+v0127F0C8_0 .net *"_s4", 10 0, C4<00001100000>; 1 drivers
+v0127EEB8_0 .net *"_s41", 0 0, C4<0>; 1 drivers
+v0127F3E0_0 .net *"_s42", 10 0, C4<00000100011>; 1 drivers
+v0127F490_0 .net *"_s44", 0 0, L_0127FE10; 1 drivers
+v0127F6A0_0 .net *"_s46", 0 0, L_0121B488; 1 drivers
+v0127F648_0 .net *"_s48", 11 0, L_01280390; 1 drivers
+v0127F178_0 .net *"_s51", 1 0, C4<00>; 1 drivers
+v0127F120_0 .net *"_s52", 11 0, C4<001000000011>; 1 drivers
+v0127EF68_0 .net *"_s54", 0 0, L_0127FE68; 1 drivers
+v0127EC50_0 .net *"_s58", 31 0, L_01280020; 1 drivers
+v0127EE08_0 .net *"_s6", 0 0, L_01280B78; 1 drivers
+v0127F540_0 .net *"_s61", 21 0, C4<0000000000000000000000>; 1 drivers
+v0127F280_0 .net *"_s62", 31 0, C4<00000000000000000000000010010000>; 1 drivers
+v0127EE60_0 .net *"_s64", 31 0, L_01280338; 1 drivers
+v0127F1D0_0 .net *"_s68", 31 0, L_012805F8; 1 drivers
+v0127EFC0_0 .net *"_s71", 21 0, C4<0000000000000000000000>; 1 drivers
+v0127ECA8_0 .net *"_s72", 31 0, C4<00000000000000000000000000100011>; 1 drivers
+v0127F070_0 .net *"_s74", 31 0, L_0127FD60; 1 drivers
+v0127F4E8_0 .net "clk_pix", 0 0, v0127ED58_0; 1 drivers
+v0127F228_0 .var "h_count", 9 0;
+v0127F6F8_0 .alias "hsync", 0 0, v0127EDB0_0;
+v0127EF10_0 .alias "pixel_x", 9 0, v01280968_0;
+v0127F2D8_0 .alias "pixel_y", 9 0, v01280808_0;
+v0127F330_0 .net "reset", 0 0, v012807B0_0; 1 drivers
+v0127F388_0 .var "v_count", 9 0;
+v0127F438_0 .alias "video_on", 0 0, v01280AC8_0;
+v0127ED00_0 .alias "vsync", 0 0, v01280BD0_0;
+E_01244348 .event posedge, v0127F330_0, v0127F4E8_0;
+L_012809C0 .concat [ 10 1 0 0], v0127F228_0, C4<0>;
+L_01280B78 .cmp/gt 11, C4<00001100000>, L_012809C0;
+L_01280758 .concat [ 10 1 0 0], v0127F388_0, C4<0>;
+L_01280860 .cmp/gt 11, C4<00000000010>, L_01280758;
+L_01280A18 .concat [ 10 1 0 0], v0127F228_0, C4<0>;
+L_01280A70 .cmp/ge 11, L_01280A18, C4<00010010000>;
+L_01280910 .concat [ 10 3 0 0], v0127F228_0, C4<000>;
+L_012808B8 .cmp/gt 13, C4<0001100010000>, L_01280910;
+L_01280078 .concat [ 10 1 0 0], v0127F388_0, C4<0>;
+L_0127FE10 .cmp/ge 11, L_01280078, C4<00000100011>;
+L_01280390 .concat [ 10 2 0 0], v0127F388_0, C4<00>;
+L_0127FE68 .cmp/gt 12, C4<001000000011>, L_01280390;
+L_01280020 .concat [ 10 22 0 0], v0127F228_0, C4<0000000000000000000000>;
+L_01280338 .arith/sub 32, L_01280020, C4<00000000000000000000000010010000>;
+L_01280700 .part L_01280338, 0, 10;
+L_012805F8 .concat [ 10 22 0 0], v0127F388_0, C4<0000000000000000000000>;
+L_0127FD60 .arith/sub 32, L_012805F8, C4<00000000000000000000000000100011>;
+L_01280180 .part L_0127FD60, 0, 10;
+    .scope S_012426F8;
+T_0 ;
+    %wait E_01244348;
+    %load/v 8, v0127F330_0, 1;
+    %jmp/0xz  T_0.0, 8;
+    %ix/load 0, 10, 0;
+    %assign/v0 v0127F228_0, 0, 0;
+    %ix/load 0, 10, 0;
+    %assign/v0 v0127F388_0, 0, 0;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v0127F228_0, 10;
+    %mov 18, 0, 3;
+    %cmpi/u 8, 799, 13;
+    %jmp/0xz  T_0.2, 4;
+    %ix/load 0, 10, 0;
+    %assign/v0 v0127F228_0, 0, 0;
+    %load/v 8, v0127F388_0, 10;
+    %mov 18, 0, 3;
+    %cmpi/u 8, 524, 13;
+    %jmp/0xz  T_0.4, 4;
+    %ix/load 0, 10, 0;
+    %assign/v0 v0127F388_0, 0, 0;
+    %jmp T_0.5;
+T_0.4 ;
+    %ix/load 0, 1, 0;
+    %load/vp0 8, v0127F388_0, 10;
+    %ix/load 0, 10, 0;
+    %assign/v0 v0127F388_0, 0, 8;
+T_0.5 ;
+    %jmp T_0.3;
+T_0.2 ;
+    %ix/load 0, 1, 0;
+    %load/vp0 8, v0127F228_0, 10;
+    %ix/load 0, 10, 0;
+    %assign/v0 v0127F228_0, 0, 8;
+T_0.3 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_01241F00;
+T_1 ;
+    %set/v v0127ED58_0, 0, 1;
+T_1.0 ;
+    %delay 20000, 0;
+    %load/v 8, v0127ED58_0, 1;
+    %inv 8, 1;
+    %set/v v0127ED58_0, 8, 1;
+    %jmp T_1.0;
+    %end;
+    .thread T_1;
+    .scope S_01241F00;
+T_2 ;
+    %vpi_call 2 36 "$dumpfile", "vga_controller.vcd";
+    %vpi_call 2 37 "$dumpvars", 1'sb0, S_01241F00;
+    %set/v v012807B0_0, 1, 1;
+    %set/v v0127F5F0_0, 0, 32;
+    %set/v v0127F598_0, 0, 32;
+    %movi 8, 5, 4;
+T_2.0 %cmp/s 0, 8, 4;
+    %jmp/0xz T_2.1, 5;
+    %add 8, 1, 4;
+    %wait E_012442E8;
+    %jmp T_2.0;
+T_2.1 ;
+    %wait E_01244528;
+    %set/v v012807B0_0, 0, 1;
+    %set/v v01280B20_0, 0, 32;
+T_2.2 ;
+    %load/v 8, v01280B20_0, 32;
+    %movi 40, 420000, 32;
+    %cmp/s 8, 40, 32;
+    %jmp/0xz T_2.3, 5;
+    %wait E_01244528;
+    %load/v 8, v01280AC8_0, 1;
+    %jmp/0xz  T_2.4, 8;
+    %load/v 8, v0127F5F0_0, 32;
+    %mov 40, 39, 1;
+    %addi 8, 1, 33;
+    %set/v v0127F5F0_0, 8, 32;
+T_2.4 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v01280B20_0, 32;
+    %set/v v01280B20_0, 8, 32;
+    %jmp T_2.2;
+T_2.3 ;
+    %vpi_call 2 55 "$display", "Active pixels counted: %0d", v0127F5F0_0;
+    %vpi_call 2 56 "$display", "Expected active pixels: %0d", 20'sb01001011000000000000;
+    %load/v 8, v0127F5F0_0, 32;
+    %movi 40, 307200, 32;
+    %cmp/u 8, 40, 32;
+    %jmp/0xz  T_2.6, 4;
+    %vpi_call 2 59 "$display", "PASS: Visible pixel count is correct.";
+    %jmp T_2.7;
+T_2.6 ;
+    %vpi_call 2 61 "$display", "FAIL: Visible pixel count is incorrect.";
+T_2.7 ;
+    %vpi_call 2 63 "$finish";
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb_vga_controller.v";
+    "vga_controller.v";

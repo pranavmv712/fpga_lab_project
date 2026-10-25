@@ -1,0 +1,294 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_01161F00 .scope module, "tb_frame_buffer_test_top" "tb_frame_buffer_test_top" 2 4;
+ .timescale -9 -12;
+v011A55A8_0 .var/i "errors", 31 0;
+v011A5080_0 .net "pixel_data", 15 0, v01169CA8_0; 1 drivers
+v011A51E0_0 .net "pixel_valid", 0 0, v011711A8_0; 1 drivers
+v011A5188_0 .var "pixel_x", 9 0;
+v011A4F78_0 .var "pixel_y", 9 0;
+v011A4FD0_0 .var "rd_clk", 0 0;
+v011A52E8_0 .var "reset", 0 0;
+v011A54F8_0 .var "video_on", 0 0;
+v011A5028_0 .var "wr_addr", 16 0;
+v011A50D8_0 .var "wr_clk", 0 0;
+v011A54A0_0 .var "wr_data", 15 0;
+v011A5238_0 .var "wr_en", 0 0;
+S_01161928 .scope task, "check_pixel" "check_pixel" 2 53, 2 53, S_01161F00;
+ .timescale -9 -12;
+v011A4EC8_0 .var "expected", 15 0;
+v011A4F20_0 .var "x", 9 0;
+v011A5708_0 .var "y", 9 0;
+E_01168368 .event negedge, v012AABF8_0;
+TD_tb_frame_buffer_test_top.check_pixel ;
+    %wait E_01168368;
+    %load/v 8, v011A4F20_0, 10;
+    %set/v v011A5188_0, 8, 10;
+    %load/v 8, v011A5708_0, 10;
+    %set/v v011A4F78_0, 8, 10;
+    %set/v v011A54F8_0, 1, 1;
+    %wait E_01168148;
+    %delay 1000, 0;
+    %load/v 8, v011A5080_0, 16;
+    %load/v 24, v011A4EC8_0, 16;
+    %cmp/u 8, 24, 16;
+    %inv 6, 1;
+    %jmp/0xz  T_0.0, 6;
+    %vpi_call 2 68 "$display", "FAIL: (%0d,%0d) expected=%h got=%h", v011A4F20_0, v011A5708_0, v011A4EC8_0, v011A5080_0;
+    %load/v 8, v011A55A8_0, 32;
+    %mov 40, 39, 1;
+    %addi 8, 1, 33;
+    %set/v v011A55A8_0, 8, 32;
+    %jmp T_0.1;
+T_0.0 ;
+    %vpi_call 2 73 "$display", "PASS: (%0d,%0d) pixel=%h", v011A4F20_0, v011A5708_0, v011A5080_0;
+T_0.1 ;
+    %end;
+S_011618A0 .scope task, "write_pixel" "write_pixel" 2 40, 2 40, S_01161F00;
+ .timescale -9 -12;
+v011A5A20_0 .var "addr", 16 0;
+v011A5550_0 .var "data", 15 0;
+E_011682C8 .event negedge, v01170FF0_0;
+TD_tb_frame_buffer_test_top.write_pixel ;
+    %wait E_011682C8;
+    %load/v 8, v011A5A20_0, 17;
+    %set/v v011A5028_0, 8, 17;
+    %load/v 8, v011A5550_0, 16;
+    %set/v v011A54A0_0, 8, 16;
+    %set/v v011A5238_0, 1, 1;
+    %wait E_011682C8;
+    %set/v v011A5238_0, 0, 1;
+    %end;
+S_01162670 .scope module, "dut" "frame_buffer_test_top" 2 16, 3 2, S_01161F00;
+ .timescale -9 -12;
+v011A59C8_0 .alias "pixel_data", 15 0, v011A5080_0;
+v011A5A78_0 .alias "pixel_valid", 0 0, v011A51E0_0;
+v011A5760_0 .net "pixel_x", 9 0, v011A5188_0; 1 drivers
+v011A5B80_0 .net "pixel_y", 9 0, v011A4F78_0; 1 drivers
+v011A57B8_0 .net "rd_addr", 16 0, v01171308_0; 1 drivers
+v011A5810_0 .net "rd_clk", 0 0, v011A4FD0_0; 1 drivers
+v011A5BD8_0 .net "reset", 0 0, v011A52E8_0; 1 drivers
+v011A5868_0 .net "video_on", 0 0, v011A54F8_0; 1 drivers
+v011A5918_0 .net "wr_addr", 16 0, v011A5028_0; 1 drivers
+v011A5AD0_0 .net "wr_clk", 0 0, v011A50D8_0; 1 drivers
+v011A58C0_0 .net "wr_data", 15 0, v011A54A0_0; 1 drivers
+v011A5970_0 .net "wr_en", 0 0, v011A5238_0; 1 drivers
+S_011619B0 .scope module, "u_pixel_reader" "pixel_reader" 3 20, 4 2, S_01162670;
+ .timescale -9 -12;
+v01170BD0_0 .net *"_s10", 8 0, L_011A5130; 1 drivers
+v01170F40_0 .net *"_s12", 7 0, C4<00000000>; 1 drivers
+v01170D30_0 .net *"_s14", 8 0, C4<000000000>; 1 drivers
+v01170E90_0 .net *"_s16", 16 0, L_011A5290; 1 drivers
+v01170C28_0 .net *"_s18", 16 0, L_011A5398; 1 drivers
+v011710F8_0 .net *"_s20", 10 0, L_011A5340; 1 drivers
+v01170CD8_0 .net *"_s22", 5 0, C4<000000>; 1 drivers
+v01170F98_0 .net *"_s4", 8 0, C4<000000000>; 1 drivers
+v01171150_0 .net *"_s6", 16 0, L_011A4DC0; 1 drivers
+v01171258_0 .net *"_s8", 16 0, L_011A56B0; 1 drivers
+v01170EE8_0 .alias "clk", 0 0, v011A5810_0;
+v011711A8_0 .var "pixel_valid", 0 0;
+v01171200_0 .alias "pixel_x", 9 0, v011A5760_0;
+v011712B0_0 .alias "pixel_y", 9 0, v011A5B80_0;
+v01171308_0 .var "rd_addr", 16 0;
+v01170C80_0 .alias "reset", 0 0, v011A5BD8_0;
+v01170D88_0 .net "row_offset", 16 0, L_011A5448; 1 drivers
+v01170DE0_0 .net "src_x", 8 0, L_011A4D68; 1 drivers
+v01170E38_0 .net "src_y", 7 0, L_011A5600; 1 drivers
+v011A5B28_0 .alias "video_on", 0 0, v011A5868_0;
+E_011681A8 .event posedge, v01170C80_0, v012AABF8_0;
+E_01168468 .event edge, v011A5B28_0, v01170D88_0, v01170DE0_0;
+L_011A4D68 .part v011A5188_0, 1, 9;
+L_011A5600 .part v011A4F78_0, 1, 8;
+L_011A4DC0 .concat [ 8 9 0 0], L_011A5600, C4<000000000>;
+L_011A5130 .part L_011A4DC0, 0, 9;
+L_011A56B0 .concat [ 8 9 0 0], C4<00000000>, L_011A5130;
+L_011A5290 .concat [ 8 9 0 0], L_011A5600, C4<000000000>;
+L_011A5340 .part L_011A5290, 0, 11;
+L_011A5398 .concat [ 6 11 0 0], C4<000000>, L_011A5340;
+L_011A5448 .arith/sum 17, L_011A56B0, L_011A5398;
+S_01162890 .scope module, "u_frame_buffer" "frame_buffer" 3 30, 5 2, S_01162670;
+ .timescale -9 -12;
+P_0116840C .param/l "FRAME_SIZE" 5 14, +C4<010010110000000000>;
+v01166230 .array "memory", 76799 0, 15 0;
+v012AA390_0 .alias "rd_addr", 16 0, v011A57B8_0;
+v012AABF8_0 .alias "rd_clk", 0 0, v011A5810_0;
+v01169CA8_0 .var "rd_data", 15 0;
+v01169D00_0 .alias "wr_addr", 16 0, v011A5918_0;
+v01170FF0_0 .alias "wr_clk", 0 0, v011A5AD0_0;
+v01171048_0 .alias "wr_data", 15 0, v011A58C0_0;
+v011710A0_0 .alias "wr_en", 0 0, v011A5970_0;
+E_01168148 .event posedge, v012AABF8_0;
+E_01168308 .event posedge, v01170FF0_0;
+    .scope S_011619B0;
+T_2 ;
+    %wait E_01168468;
+    %load/v 8, v011A5B28_0, 1;
+    %jmp/0xz  T_2.0, 8;
+    %load/v 8, v01170D88_0, 17;
+    %load/v 25, v01170DE0_0, 9;
+    %mov 34, 0, 8;
+    %add 8, 25, 17;
+    %set/v v01171308_0, 8, 17;
+    %jmp T_2.1;
+T_2.0 ;
+    %set/v v01171308_0, 0, 17;
+T_2.1 ;
+    %jmp T_2;
+    .thread T_2, $push;
+    .scope S_011619B0;
+T_3 ;
+    %wait E_011681A8;
+    %load/v 8, v01170C80_0, 1;
+    %jmp/0xz  T_3.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v011711A8_0, 0, 0;
+    %jmp T_3.1;
+T_3.0 ;
+    %load/v 8, v011A5B28_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v011711A8_0, 0, 8;
+T_3.1 ;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_01162890;
+T_4 ;
+    %wait E_01168308;
+    %load/v 8, v011710A0_0, 1;
+    %load/v 9, v01169D00_0, 17;
+    %mov 26, 0, 2;
+    %movi 28, 76800, 19;
+    %cmp/u 9, 28, 19;
+    %mov 9, 5, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_4.0, 8;
+    %load/v 8, v01171048_0, 16;
+    %ix/getv 3, v01169D00_0;
+    %jmp/1 t_0, 4;
+    %ix/load 0, 16, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v01166230, 0, 8;
+t_0 ;
+T_4.0 ;
+    %jmp T_4;
+    .thread T_4;
+    .scope S_01162890;
+T_5 ;
+    %wait E_01168148;
+    %load/v 8, v012AA390_0, 17;
+    %mov 25, 0, 2;
+    %movi 27, 76800, 19;
+    %cmp/u 8, 27, 19;
+    %jmp/0xz  T_5.0, 5;
+    %ix/getv 3, v012AA390_0;
+    %load/av 8, v01166230, 16;
+    %ix/load 0, 16, 0;
+    %assign/v0 v01169CA8_0, 0, 8;
+    %jmp T_5.1;
+T_5.0 ;
+    %ix/load 0, 16, 0;
+    %assign/v0 v01169CA8_0, 0, 0;
+T_5.1 ;
+    %jmp T_5;
+    .thread T_5;
+    .scope S_01161F00;
+T_6 ;
+    %set/v v011A50D8_0, 0, 1;
+T_6.0 ;
+    %delay 10000, 0;
+    %load/v 8, v011A50D8_0, 1;
+    %inv 8, 1;
+    %set/v v011A50D8_0, 8, 1;
+    %jmp T_6.0;
+    %end;
+    .thread T_6;
+    .scope S_01161F00;
+T_7 ;
+    %set/v v011A4FD0_0, 0, 1;
+T_7.0 ;
+    %delay 20000, 0;
+    %load/v 8, v011A4FD0_0, 1;
+    %inv 8, 1;
+    %set/v v011A4FD0_0, 8, 1;
+    %jmp T_7.0;
+    %end;
+    .thread T_7;
+    .scope S_01161F00;
+T_8 ;
+    %vpi_call 2 80 "$dumpfile", "frame_buffer_test_top.vcd";
+    %vpi_call 2 81 "$dumpvars", 1'sb0, S_01161F00;
+    %set/v v011A52E8_0, 1, 1;
+    %set/v v011A5238_0, 0, 1;
+    %set/v v011A5028_0, 0, 17;
+    %set/v v011A54A0_0, 0, 16;
+    %set/v v011A54F8_0, 0, 1;
+    %set/v v011A5188_0, 0, 10;
+    %set/v v011A4F78_0, 0, 10;
+    %set/v v011A55A8_0, 0, 32;
+    %movi 8, 3, 3;
+T_8.0 %cmp/s 0, 8, 3;
+    %jmp/0xz T_8.1, 5;
+    %add 8, 1, 3;
+    %wait E_01168368;
+    %jmp T_8.0;
+T_8.1 ;
+    %set/v v011A52E8_0, 0, 1;
+    %set/v v011A5A20_0, 0, 17;
+    %movi 8, 63488, 16;
+    %set/v v011A5550_0, 8, 16;
+    %fork TD_tb_frame_buffer_test_top.write_pixel, S_011618A0;
+    %join;
+    %movi 8, 1, 17;
+    %set/v v011A5A20_0, 8, 17;
+    %movi 8, 2016, 16;
+    %set/v v011A5550_0, 8, 16;
+    %fork TD_tb_frame_buffer_test_top.write_pixel, S_011618A0;
+    %join;
+    %movi 8, 320, 17;
+    %set/v v011A5A20_0, 8, 17;
+    %movi 8, 31, 16;
+    %set/v v011A5550_0, 8, 16;
+    %fork TD_tb_frame_buffer_test_top.write_pixel, S_011618A0;
+    %join;
+    %set/v v011A4F20_0, 0, 10;
+    %set/v v011A5708_0, 0, 10;
+    %movi 8, 63488, 16;
+    %set/v v011A4EC8_0, 8, 16;
+    %fork TD_tb_frame_buffer_test_top.check_pixel, S_01161928;
+    %join;
+    %movi 8, 2, 10;
+    %set/v v011A4F20_0, 8, 10;
+    %set/v v011A5708_0, 0, 10;
+    %movi 8, 2016, 16;
+    %set/v v011A4EC8_0, 8, 16;
+    %fork TD_tb_frame_buffer_test_top.check_pixel, S_01161928;
+    %join;
+    %set/v v011A4F20_0, 0, 10;
+    %movi 8, 2, 10;
+    %set/v v011A5708_0, 8, 10;
+    %movi 8, 31, 16;
+    %set/v v011A4EC8_0, 8, 16;
+    %fork TD_tb_frame_buffer_test_top.check_pixel, S_01161928;
+    %join;
+    %load/v 8, v011A55A8_0, 32;
+    %cmpi/u 8, 0, 32;
+    %jmp/0xz  T_8.2, 4;
+    %vpi_call 2 104 "$display", "ALL FRAME BUFFER INTEGRATION TESTS PASSED";
+    %jmp T_8.3;
+T_8.2 ;
+    %vpi_call 2 106 "$display", "INTEGRATION TESTS FAILED: %0d errors", v011A55A8_0;
+T_8.3 ;
+    %vpi_call 2 108 "$finish";
+    %end;
+    .thread T_8;
+# The file index is used to find the file name in the following table.
+:file_names 6;
+    "N/A";
+    "<interactive>";
+    "tb_frame_buffer_test_top.v";
+    "frame_buffer_test_top.v";
+    "pixel_reader.v";
+    "frame_buffer.v";

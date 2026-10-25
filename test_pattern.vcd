@@ -1,0 +1,128 @@
+$date
+	Sun Oct 25 18:13:42 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_test_pattern $end
+$var wire 8 ! blue [7:0] $end
+$var wire 8 " green [7:0] $end
+$var wire 8 # red [7:0] $end
+$var integer 32 $ errors [31:0] $end
+$var reg 10 % pixel_x [9:0] $end
+$var reg 10 & pixel_y [9:0] $end
+$var reg 1 ' video_on $end
+$scope module dut $end
+$var wire 10 ( pixel_x [9:0] $end
+$var wire 10 ) pixel_y [9:0] $end
+$var wire 1 * video_on $end
+$var reg 8 + blue [7:0] $end
+$var reg 8 , green [7:0] $end
+$var reg 8 - red [7:0] $end
+$upscope $end
+$scope task check_color $end
+$var reg 8 . expected_blue [7:0] $end
+$var reg 8 / expected_green [7:0] $end
+$var reg 8 0 expected_red [7:0] $end
+$var reg 10 1 x [9:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b101000 1
+b11111111 0
+b11111111 /
+b11111111 .
+b11111111 -
+b11111111 ,
+b11111111 +
+1*
+b0 )
+b101000 (
+1'
+b0 &
+b101000 %
+b0 $
+b11111111 #
+b11111111 "
+b11111111 !
+$end
+#10000
+b0 +
+b0 !
+b11111111 ,
+b11111111 "
+b11111111 -
+b11111111 #
+b1111000 %
+b1111000 (
+b0 .
+b1111000 1
+#20000
+b11111111 +
+b11111111 !
+b11111111 ,
+b11111111 "
+b0 -
+b0 #
+b11001000 %
+b11001000 (
+b11111111 .
+b0 0
+b11001000 1
+#30000
+b0 +
+b0 !
+b11111111 ,
+b11111111 "
+b100011000 %
+b100011000 (
+b0 .
+b100011000 1
+#40000
+b11111111 +
+b11111111 !
+b11111111 -
+b11111111 #
+b0 ,
+b0 "
+b101101000 %
+b101101000 (
+b11111111 .
+b0 /
+b11111111 0
+b101101000 1
+#50000
+b0 +
+b0 !
+b11111111 -
+b11111111 #
+b110111000 %
+b110111000 (
+b0 .
+b110111000 1
+#60000
+b11111111 +
+b11111111 !
+b0 -
+b0 #
+b1000001000 %
+b1000001000 (
+b11111111 .
+b0 0
+b1000001000 1
+#70000
+b0 +
+b0 !
+b1001011000 %
+b1001011000 (
+b0 .
+b1001011000 1
+#80000
+0'
+0*
+#90000

@@ -1,0 +1,161 @@
+$date
+	Sun Oct 25 19:09:29 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_pixel_reader $end
+$var wire 1 ! pixel_valid $end
+$var wire 17 " rd_addr [16:0] $end
+$var reg 1 # clk $end
+$var integer 32 $ errors [31:0] $end
+$var reg 10 % pixel_x [9:0] $end
+$var reg 10 & pixel_y [9:0] $end
+$var reg 1 ' reset $end
+$var reg 1 ( video_on $end
+$scope module dut $end
+$var wire 1 ) clk $end
+$var wire 10 * pixel_x [9:0] $end
+$var wire 10 + pixel_y [9:0] $end
+$var wire 1 , reset $end
+$var wire 17 - row_offset [16:0] $end
+$var wire 9 . src_x [8:0] $end
+$var wire 8 / src_y [7:0] $end
+$var wire 1 0 video_on $end
+$var reg 1 1 pixel_valid $end
+$var reg 17 2 rd_addr [16:0] $end
+$upscope $end
+$scope task check_address $end
+$var reg 17 3 expected [16:0] $end
+$var reg 10 4 x [9:0] $end
+$var reg 10 5 y [9:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx 5
+bx 4
+bx 3
+b0 2
+01
+00
+b0 /
+b0 .
+b0 -
+1,
+b0 +
+b0 *
+0)
+0(
+1'
+b0 &
+b0 %
+b0 $
+0#
+b0 "
+0!
+$end
+#10000
+1#
+1)
+#20000
+0#
+0)
+#30000
+1#
+1)
+#40000
+b0 3
+b0 5
+b0 4
+0'
+0,
+0#
+0)
+#50000
+1#
+1)
+#60000
+1(
+10
+0#
+0)
+#61000
+b1 4
+#70000
+11
+1!
+1#
+1)
+#80000
+b1 %
+b1 *
+0#
+0)
+#81000
+b1 3
+b10 4
+#90000
+1#
+1)
+#100000
+b1 2
+b1 "
+b1 .
+b10 %
+b10 *
+0#
+0)
+#101000
+b101000000 3
+b10 5
+b0 4
+#110000
+1#
+1)
+#120000
+b101000000 -
+b101000000 2
+b101000000 "
+b1 /
+b0 .
+b10 &
+b10 +
+b0 %
+b0 *
+0#
+0)
+#121000
+b10010101111111111 3
+b111011111 5
+b1001111111 4
+#130000
+1#
+1)
+#140000
+b10010101011000000 -
+b10010101111111111 2
+b10010101111111111 "
+b11101111 /
+b100111111 .
+b111011111 &
+b111011111 +
+b1001111111 %
+b1001111111 *
+0#
+0)
+#150000
+1#
+1)
+#160000
+b0 2
+b0 "
+0(
+00
+0#
+0)
+#161000
